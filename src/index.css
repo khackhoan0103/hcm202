@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-red-900 via-black to-black min-h-screen text-gray-100;
+    background-attachment: fixed;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .section-card {
+    @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-red-100 p-8 mb-8;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,248,240,0.95) 100%);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 0 1px rgba(239, 68, 68, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981, #3b82f6);
+    background-size: 300% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+  
+  .section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(239, 68, 68, 0.2);
+  }
+  
+  .quote-highlight {
+    @apply border-l-6 border-red-500 p-6 rounded-r-2xl italic relative;
+    background: linear-gradient(135deg, #fef2f2 0%, #fef3c7 50%, #ecfdf5 100%);
+    box-shadow: 
+      inset 0 2px 4px 0 rgba(0, 0, 0, 0.06),
+      0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .quote-highlight::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: rgba(239, 68, 68, 0.2);
+    font-family: serif;
+    line-height: 1;
+  }
+  
+  .quote-highlight::after {
+    content: '"';
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    font-size: 4rem;
+    color: rgba(239, 68, 68, 0.2);
+    font-family: serif;
+    line-height: 1;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-6 flex items-center gap-4;
+    background: linear-gradient(135deg, #dc2626, #ea580c, #d97706);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  /* Keep leading emoji/icon in normal color (not gradient) */
+  .section-title > span:first-child {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #ef4444, #f59e0b);
+    border-radius: 2px;
+  }
+  
+  .subsection-title {
+    @apply text-xl font-semibold mb-4 flex items-center gap-3;
+    background: linear-gradient(135deg, #b91c1c, #c2410c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  /* Keep leading emoji/icon in normal color (not gradient) */
+  .subsection-title > span:first-child {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+  }
+  
+  .subsection-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  }
+  
+  .content-text {
+    @apply text-gray-700 leading-relaxed mb-6;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  
+  .list-item {
+    @apply mb-4 pl-6 relative;
+    background: linear-gradient(135deg, rgba(254, 242, 242, 0.5), rgba(254, 243, 199, 0.5));
+    border-radius: 12px;
+    padding: 12px 16px;
+    border-left: 4px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, #ef4444, #f59e0b);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    transition: all 0.3s ease;
+  }
+  
+  .list-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+  }
+  
+  .highlight-text {
+    @apply font-semibold;
+    background: linear-gradient(135deg, #dc2626, #ea580c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .gradient-bg-1 {
+    background: linear-gradient(135deg, #fef2f2 0%, #fef3c7 50%, #ecfdf5 100%);
+  }
+  
+  .gradient-bg-2 {
+    background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #f0fdf4 100%);
+  }
+  
+  .gradient-bg-3 {
+    background: linear-gradient(135deg, #fdf4ff 0%, #fef3c7 50%, #fef2f2 100%);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #dc2626, #d97706);
+}
