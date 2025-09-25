@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import HoChiMinhContent from './components/HoChiMinhContent'
 import Navigation from './components/Navigation'
+import Game from './components/Game'
 
 function App() {
   const [activeSection, setActiveSection] = useState('intro')
+  const [showGame, setShowGame] = useState(false)
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-red-900 via-black to-black">
@@ -38,15 +40,38 @@ function App() {
       </header>
       
       <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          <aside className="lg:col-span-1">
-            <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-          </aside>
-          
-          <main className="lg:col-span-3">
-            <HoChiMinhContent activeSection={activeSection} />
-          </main>
-        </div>
+        {showGame ? (
+          <div>
+            <div className="mb-6">
+              <button
+                onClick={() => setShowGame(false)}
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-500 text-white shadow hover:brightness-110"
+              >
+                ← Quay lại nội dung
+              </button>
+            </div>
+            <Game onBack={() => setShowGame(false)} />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <aside className="lg:col-span-1">
+              <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+              <div className="mt-6 p-4 rounded-xl bg-black/30 border border-red-800/30">
+                <h4 className="text-sm font-semibold text-red-200 mb-2">Trải nghiệm</h4>
+                <button
+                  onClick={() => setShowGame(true)}
+                  className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-500 text-white shadow hover:brightness-110"
+                >
+                  Chơi game tìm điểm khác biệt
+                </button>
+              </div>
+            </aside>
+            
+            <main className="lg:col-span-3">
+              <HoChiMinhContent activeSection={activeSection} />
+            </main>
+          </div>
+        )}
       </div>
       
       <footer className="relative z-10 mt-20">
