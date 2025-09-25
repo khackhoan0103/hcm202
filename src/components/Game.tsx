@@ -61,14 +61,12 @@ const Game: React.FC<GameProps> = ({ onBack }) => {
         <div className="flex items-center justify-between">
           <h2 className="section-title">
             <span>🎮</span>
-            Game: Tìm 5 điểm khác biệt
+            Game: Tìm điểm khác biệt
           </h2>
           <div className="flex items-center gap-2">
             <ProgressBar total={hotspots.length} found={foundIds.length} />
           </div>
         </div>
-
-        <p className="content-text">Bấm vào 5 vị trí khác biệt giữa hai hình. Thứ tự bấm không quan trọng.</p>
 
         <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {[1, 2].map((col) => (
