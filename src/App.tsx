@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HoChiMinhContent from './components/HoChiMinhContent'
 import Navigation from './components/Navigation'
 import Game from './components/Game'
@@ -6,6 +6,23 @@ import Game from './components/Game'
 function App() {
   const [activeSection, setActiveSection] = useState('intro')
   const [showGame, setShowGame] = useState(false)
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
+
+  const quotes = [
+    "Đoàn kết, đoàn kết, đại đoàn kết / Thành công, thành công, đại thành công",
+    "Đoàn kết là sức mạnh của chúng ta",
+    "Đoàn kết là một lực lượng vô địch của chúng ta để khắc phục khó khăn, giành lấy thắng lợi",
+    "Đoàn kết là sức mạnh, đoàn kết là thắng lợi",
+    "Đoàn kết là sức mạnh, là then chốt của thành công"
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length)
+    }, 4000) // Thay đổi câu mỗi 4 giây
+
+    return () => clearInterval(interval)
+  }, [quotes.length])
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-red-900 via-black to-black">
@@ -80,22 +97,53 @@ function App() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z%22/%3E%3C/g%3E%3C/svg%3E')]"></div>
           
           <div className="max-w-6xl mx-auto px-4 text-center relative">
-            <div className="mb-6">
-              <div className="w-16 h-16 mx-auto bg-gradient-to-r from-yellow-400 to-red-400 rounded-full flex items-center justify-center mb-4 floating-animation">
-                <span className="text-2xl">🏛️</span>
-              </div>
+          <div className="mb-6">
+            <div className="mx-auto mb-4 floating-animation">
+              {/* Lớp tạo viền gradient bo góc */}
+              <span className="inline-block rounded-xl p-[3px] bg-gradient-to-r from-yellow-400 to-red-400">
+                {/* Lớp viền trắng mảnh (tuỳ chọn) */}
+                <span className="block rounded-xl bg-white p-[0px]">
+                  {/* Ảnh giữ tỉ lệ gốc, bo góc theo khung chữ nhật */}
+                  <img
+                    src="cropped-logo-1.jpg"
+                    alt="Hồ Chí Minh Việt Nam"
+                    className="block rounded-xl w-70 h-auto object-cover"
+                  />
+                </span>
+              </span>
             </div>
+          </div>
             
-            <blockquote className="text-2xl md:text-3xl font-bold mb-4 leading-relaxed">
-              "Đoàn kết, đoàn kết, đại đoàn kết / Thành công, thành công, đại thành công"
-            </blockquote>
-            
-            <p className="text-lg opacity-90 mb-6">- Chủ tịch Hồ Chí Minh</p>
-            
-            <div className="flex justify-center space-x-4">
-              <div className="w-3 h-3 bg-yellow-400 rounded-full pulse-glow"></div>
-              <div className="w-3 h-3 bg-red-400 rounded-full pulse-glow" style={{animationDelay: '0.5s'}}></div>
-              <div className="w-3 h-3 bg-orange-400 rounded-full pulse-glow" style={{animationDelay: '1s'}}></div>
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentQuoteIndex * 100}%)` }}
+              >
+                {quotes.map((quote, index) => (
+                  <div key={index} className="w-full flex-shrink-0">
+                    <blockquote className="text-2xl md:text-3xl font-bold mb-4 leading-relaxed">
+                      "{quote}"
+                    </blockquote>
+                  </div>
+                ))}
+              </div>
+              
+              <p className="text-lg opacity-90 mb-6">Chủ tịch Hồ Chí Minh</p>
+
+              {/* Navigation dots */}
+              <div className="flex justify-center space-x-2 mb-4">
+                {quotes.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentQuoteIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentQuoteIndex 
+                        ? 'bg-yellow-400 scale-125' 
+                        : 'bg-white/40 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

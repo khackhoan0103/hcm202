@@ -7,12 +7,23 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ activeSection, setActiveSection }) => {
   const sections = [
-    { id: 'intro', title: 'Giới thiệu', icon: '🏛️' },
-    { id: 'role', title: 'Vai trò đại đoàn kết', icon: '⚡' },
-    { id: 'force', title: 'Lực lượng đoàn kết', icon: '👥' },
-    { id: 'conditions', title: 'Điều kiện xây dựng', icon: '🔑' },
-    { id: 'organization', title: 'Hình thức tổ chức', icon: '🏗️' },
-    { id: 'methods', title: 'Phương thức xây dựng', icon: '🛠️' }
+    { id: 'intro', title: 'Giới thiệu' },
+    { id: 'role', 
+    title: 'Vai trò đại đoàn kết', icon: (<span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-sm">
+      1
+    </span>)},
+    { id: 'force', title: 'Lực lượng đoàn kết', icon: (<span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-sm">
+      2
+    </span>)},
+    { id: 'conditions', title: 'Điều kiện xây dựng', icon: (<span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-sm">
+      3
+    </span>)},
+    { id: 'organization', title: 'Hình thức tổ chức', icon: (<span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-sm">
+      4
+    </span>)},
+    { id: 'methods', title: 'Phương thức xây dựng', icon: (<span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-sm">
+      5
+    </span>)}
   ]
 
   return (

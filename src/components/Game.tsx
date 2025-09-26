@@ -14,16 +14,19 @@ interface GameProps {
 }
 
 // Note: Positions are percentage-based and may need fine-tuning to exactly match your images.
-// You can adjust xPct/yPct/rPct below to align precisely with the 5 differences.
+// You can adjust xPct/yPct/rPct below to align precisely with the differences.
 const Game: React.FC<GameProps> = ({ onBack }) => {
-  const hotspots: Hotspot[] = useMemo(
+  const [currentGame, setCurrentGame] = useState<'game1' | 'game2'>('game1')
+
+  const hotspotsGame1: Hotspot[] = useMemo(
     () => [
+      // Game 1: hinh1.jpg vs hinh2.jpg (5 differences)
       // 1) Lá cờ góc trên bên trái
       { id: 'flag_top_left', xPct: 10, yPct: 15.5, rPct: 8 },
       // 2) Biểu tượng cờ VN trên áo người nông dân hàng đầu tiên
       { id: 'farmer_badge', xPct: 37.5, yPct: 50, rPct: 3 },
       // 3) Biểu tượng hoa trên áo người phụ nữ hàng đầu tiên
-      { id: 'woman_flower', xPct: 53, yPct: 52.5, rPct: 3 },
+      { id: 'woman_flower', xPct: 53, yPct: 75, rPct: 10 },
       // 4) Cây súng góc bên phải của anh lính hàng đầu tiên
       { id: 'soldier_gun_right', xPct: 79, yPct: 80, rPct: 10 },
       // 5) Khói nhà máy góc bên phải phía trên
@@ -32,10 +35,39 @@ const Game: React.FC<GameProps> = ({ onBack }) => {
     [],
   )
 
+  const hotspotsGame2: Hotspot[] = useMemo(
+    () => [
+      // Game 2: hinh3.jpg vs hinh4.jpg (6 differences)
+      // You can adjust these positions and radii as needed
+
+      // xe trắng
+      { id: 'diff1', xPct: 5, yPct: 30, rPct: 4.5 },
+      // xe vàng 1
+      { id: 'diff2', xPct: 19, yPct: 13.5, rPct: 4 },
+      // xe vàng 2
+      { id: 'diff3', xPct: 79, yPct: 67, rPct: 5.5 },
+      // cây
+      { id: 'diff4', xPct: 20, yPct: 90, rPct: 30 },
+      // tòa nhà
+      { id: 'diff5', xPct: 80, yPct: 14, rPct: 18 },
+      // vũng nước
+      { id: 'diff6', xPct: 91, yPct: 80, rPct: 8 },
+    ],
+    [],
+  )
+
+  const hotspots = currentGame === 'game1' ? hotspotsGame1 : hotspotsGame2
+
   const [foundIds, setFoundIds] = useState<string[]>([])
   const [showHints, setShowHints] = useState(false)
 
   const allFound = foundIds.length === hotspots.length
+
+  // Reset found items when switching games
+  React.useEffect(() => {
+    setFoundIds([])
+    setShowHints(false)
+  }, [currentGame])
 
   function handleClick(event: React.MouseEvent<HTMLDivElement>, imageRef: HTMLDivElement) {
     const rect = imageRef.getBoundingClientRect()
@@ -63,7 +95,30 @@ const Game: React.FC<GameProps> = ({ onBack }) => {
             <span>🎮</span>
             Game: Tìm điểm khác biệt
           </h2>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            {/* Game Selection */}
+            <div className="flex gap-2">
+            <button
+              onClick={() => setCurrentGame('game1')}
+              className={`w-36 h-14 flex items-center justify-center rounded-lg text-sm font-medium transition-all ${
+                currentGame === 'game1'
+                  ? 'bg-red-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              Game 1 (5 điểm)
+            </button>
+              <button
+                onClick={() => setCurrentGame('game2')}
+                className={`w-36 h-14 flex items-center justify-center rounded-lg text-sm font-medium transition-all ${
+                  currentGame === 'game2'
+                    ? 'bg-red-500 text-white shadow-md'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                Game 2 (6 điểm)
+              </button>
+            </div>
             <ProgressBar total={hotspots.length} found={foundIds.length} />
           </div>
         </div>
@@ -72,7 +127,11 @@ const Game: React.FC<GameProps> = ({ onBack }) => {
           {[1, 2].map((col) => (
             <SpotTheDifferencePanel
               key={col}
-              imgSrc={col === 1 ? '/hinh1.jpg' : '/hinh2.jpg'}
+              imgSrc={
+                currentGame === 'game1'
+                  ? (col === 1 ? '/hinh1.jpg' : '/hinh2.jpg')
+                  : (col === 1 ? '/hinh3.jpg' : '/hinh4.jpg')
+              }
               hotspots={hotspots}
               foundIds={foundIds}
               onHit={(id) => setFoundIds((prev) => (prev.includes(id) ? prev : [...prev, id]))}
@@ -85,7 +144,7 @@ const Game: React.FC<GameProps> = ({ onBack }) => {
         <div className="mt-6">
           {allFound && (
             <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-green-200/80 to-emerald-200/80 border border-emerald-400 text-gray-800 font-semibold">
-              ✨ Tuyệt vời! Bạn đã tìm đủ 5 điểm khác biệt!
+              ✨ Tuyệt vời! Bạn đã tìm đủ {hotspots.length} điểm khác biệt!
             </div>
           )}
         </div>
