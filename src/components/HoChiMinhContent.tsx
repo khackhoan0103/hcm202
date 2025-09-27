@@ -28,7 +28,10 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
         <div className="absolute inset-0 bg-gradient-to-r from-red-100/50 via-yellow-100/50 to-green-100/50 animate-pulse"></div>
         <div className="relative z-10">
           <p className="text-xl font-bold text-red-800 mb-3 leading-relaxed">
-            "Đoàn kết, đoàn kết, đại đoàn kết / Thành công, thành công, đại thành công"
+            "Đoàn kết, đoàn kết, đại đoàn kết
+          </p>
+          <p className="text-xl font-bold text-red-800 mb-3 leading-relaxed">
+            Thành công, thành công, đại thành công"
           </p>
           <p className="text-right text-gray-700 font-medium">Chủ tịch Hồ Chí Minh</p>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import HoChiMinhContent from './components/HoChiMinhContent'
 import Navigation from './components/Navigation'
 import Game from './components/Game'
@@ -9,7 +9,7 @@ function App() {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
 
   const quotes = [
-    "Đoàn kết, đoàn kết, đại đoàn kết / Thành công, thành công, đại thành công",
+    { text: "Đoàn kết, đoàn kết, đại đoàn kết", text2: "Thành công, thành công, đại thành công" },
     "Đoàn kết là sức mạnh của chúng ta",
     "Đoàn kết là một lực lượng vô địch của chúng ta để khắc phục khó khăn, giành lấy thắng lợi",
     "Đoàn kết là sức mạnh, đoàn kết là thắng lợi",
@@ -122,7 +122,14 @@ function App() {
                 {quotes.map((quote, index) => (
                   <div key={index} className="w-full flex-shrink-0">
                     <blockquote className="text-2xl md:text-3xl font-bold mb-4 leading-relaxed">
-                      "{quote}"
+                      {typeof quote === 'object' ? (
+                        <div className="text-center">
+                          <div>"{quote.text}</div>
+                          <div>{quote.text2}"</div>
+                        </div>
+                      ) : (
+                        `"${quote}"`
+                      )}
                     </blockquote>
                   </div>
                 ))}
