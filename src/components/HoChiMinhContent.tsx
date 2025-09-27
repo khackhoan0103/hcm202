@@ -375,7 +375,7 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                   className="w-full max-w-4xl h-auto rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Poster sáng tạo của nhóm
                 </div>
               </div>
