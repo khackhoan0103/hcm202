@@ -587,11 +587,11 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                               alt="Mặt trận Việt Minh" 
                               className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Mặt trận Việt Minh tập hợp
                             </div>
-                            <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute bottom-3 right-3 text-white font-ssemibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Nguồn: Báo Quân đội nhân dân
                             </div>
                           </div>
@@ -606,7 +606,7 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                               alt="Mặt trận Liên Việt" 
                               className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Chủ tịch Hồ Chí Minh và Phó Trưởng ban Thường trực Quốc hội Tôn Đức Thắng chụp ảnh kỷ niệm với các đại biểu dự Đại hội trước cửa hội trường
                             </div>
@@ -625,7 +625,7 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                               alt="Mặt trận Tổ quốc Việt Nam" 
                               className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Đại hội Mặt trận thống nhất Việt Nam được tổ chức tại TP Hồ Chí Minh, hợp nhất 3 tổ chức: Mặt trận Tổ quốc Việt Nam, Mặt trận Dân tộc Giải phóng miền Nam Việt Nam, Liên minh các lực lượng dân tộc, dân chủ và hoà bình Việt Nam, lấy tên là Mặt trận Tổ quốc Việt Nam
                             </div>
