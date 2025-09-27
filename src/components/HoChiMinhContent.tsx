@@ -262,6 +262,21 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                   </p>
                 </div>
               </div>
+              
+              {/* Hình ảnh minh họa cho phần vai trò */}
+              <div className="mt-8 flex justify-center">
+                <div className="relative group">
+                  <img 
+                    src="/phan1.jpg" 
+                    alt="Minh họa vai trò của đại đoàn kết toàn dân tộc" 
+                    className="w-full max-w-4xl h-auto rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Minh họa vai trò của đại đoàn kết toàn dân tộc
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -348,6 +363,21 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
               <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 text-center">
                 <div className="text-3xl mb-2">🎓</div>
                 <h4 className="font-semibold text-purple-800">Trí thức</h4>
+              </div>
+            </div>
+            
+            {/* Hình ảnh minh họa cho phần lực lượng */}
+            <div className="mt-8 flex justify-center">
+              <div className="relative group">
+                <img 
+                  src="/phan2.jpg" 
+                  alt="Minh họa lực lượng của khối đại đoàn kết toàn dân tộc" 
+                  className="w-full max-w-4xl h-auto rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Poster sáng tạo của nhóm
+                </div>
               </div>
             </div>
           </div>
@@ -547,6 +577,83 @@ const HoChiMinhContent: React.FC<HoChiMinhContentProps> = ({ activeSection }) =>
                           __html: timelineDetails[selectedTimelineItem as keyof typeof timelineDetails] 
                         }}
                       />
+                      
+                      {/* Thêm hình ảnh cho các Mặt trận */}
+                      {selectedTimelineItem === 'viet-minh' && (
+                        <div className="mt-6 flex justify-center">
+                          <div className="relative group">
+                            <img 
+                              src="/vietminh.jpg" 
+                              alt="Mặt trận Việt Minh" 
+                              className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Mặt trận Việt Minh tập hợp
+                            </div>
+                            <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Nguồn: Báo Quân đội nhân dân
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {selectedTimelineItem === 'lien-viet' && (
+                        <div className="mt-6 flex justify-center">
+                          <div className="relative group">
+                            <img 
+                              src="/lienviet.jpg" 
+                              alt="Mặt trận Liên Việt" 
+                              className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Chủ tịch Hồ Chí Minh và Phó Trưởng ban Thường trực Quốc hội Tôn Đức Thắng chụp ảnh kỷ niệm với các đại biểu dự Đại hội trước cửa hội trường
+                            </div>
+                            <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Nguồn: Mặt trận Tổ quốc Việt Nam
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {selectedTimelineItem === 'mat-tran-to-quoc' && (
+                        <div className="mt-6 flex justify-center">
+                          <div className="relative group">
+                            <img 
+                              src="/mttqvn.jpg" 
+                              alt="Mặt trận Tổ quốc Việt Nam" 
+                              className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Đại hội Mặt trận thống nhất Việt Nam được tổ chức tại TP Hồ Chí Minh, hợp nhất 3 tổ chức: Mặt trận Tổ quốc Việt Nam, Mặt trận Dân tộc Giải phóng miền Nam Việt Nam, Liên minh các lực lượng dân tộc, dân chủ và hoà bình Việt Nam, lấy tên là Mặt trận Tổ quốc Việt Nam
+                            </div>
+                            <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Nguồn: Mặt trận Tổ quốc Việt Nam
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {selectedTimelineItem === 'giai-phong-mien-nam' && (
+                        <div className="mt-6 flex justify-center">
+                          <div className="relative group">
+                            <img 
+                              src="/gpmn.jpg" 
+                              alt="Mặt trận Dân tộc Giải phóng miền Nam" 
+                              className="w-full max-w-2xl h-auto rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute bottom-8 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Hàng ngàn người dân tỉnh Kiến Phong mít tinh và làm lễ thượng cờ chào mừng Mặt trận Dân tộc Giải phóng miền Nam Việt Nam ra đời
+                            </div>
+                            <div className="absolute bottom-3 right-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Nguồn: TTXVN
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
